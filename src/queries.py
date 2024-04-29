@@ -3,6 +3,7 @@ database queries
 """
 
 import src.models as _models
+import src.db_setup as _db_setup
 
 
 def init_tourists_table():
@@ -91,3 +92,15 @@ def insert_fees(fees: _models.FeesInfo):
 	"""
 	values = (fees.label, fees.aim, fees.size)
 	return (query, values)
+
+def update_value_in_table(table_name: str, new_phone_number: str, search_key: str, search_value: str):
+	query = f"""
+	UPDATE {table_name} SET {search_key}='{new_phone_number}' WHERE ({search_key} = '{search_value}');
+	"""
+	return query
+
+def delete_entry_from_table(table_name: str, search_key: str, search_value: str):
+	query = f"""
+	DELETE FROM {table_name} WHERE {search_key} = '{search_value}'
+	"""
+	return query
