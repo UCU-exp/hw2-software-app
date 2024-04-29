@@ -22,7 +22,7 @@ class Ticket(BaseModel):
 	duration: int
 
 class Tourist(BaseModel):
-	fistName: str
+	firstName: str
 	lastName: str
 	phoneNumber: str
 	class_execut: int
