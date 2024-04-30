@@ -5,15 +5,24 @@ execute models
 from pydantic import BaseModel
 
 class Catering(BaseModel):
+	"""
+	Catering class
+	"""
 	mealType: str
 	drinksType: str
 
 class FeesInfo(BaseModel):
+	"""
+	FeesInfo class
+	"""
 	label: str
 	aim: str
 	size: int
 
 class Ticket(BaseModel):
+	"""
+	Ticket class
+	"""
 	type_execut: str
 	registrateDate: str
 	groupNo: int
@@ -22,6 +31,9 @@ class Ticket(BaseModel):
 	duration: int
 
 class Tourist(BaseModel):
+	"""
+	Tourist class
+	"""
 	firstName: str
 	lastName: str
 	phoneNumber: str

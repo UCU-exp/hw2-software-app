@@ -7,6 +7,9 @@ import src.db_setup as _db_setup
 
 
 def init_tourists_table():
+	"""
+	Query to create TouristInfo table
+	"""
 	query = """
 	CREATE TABLE IF NOT EXISTS TouristInfo 
 		(
@@ -21,6 +24,9 @@ def init_tourists_table():
 	return query
 
 def init_tickets_table():
+	"""
+	Query to create Tickets table
+	"""
 	query = """
 	CREATE TABLE IF NOT EXISTS Tickets
 		(
@@ -36,6 +42,9 @@ def init_tickets_table():
 	return query
 
 def init_catering_table():
+	"""
+	Query to create Catering table
+	"""
 	query = """
 	CREATE TABLE IF NOT EXISTS Catering 
 		(
@@ -46,6 +55,9 @@ def init_catering_table():
 	return query
 
 def init_fees_table():
+	"""
+	Query to create FeesInfo table
+	"""
 	query = """
 	CREATE TABLE IF NOT EXISTS FeesInfo 
 		(
@@ -58,6 +70,9 @@ def init_fees_table():
 	return query
 
 def insert_tourist(tourist: _models.Tourist):
+	"""
+	Query to create TouristInfo table
+	"""
 	query = f"""
 	INSERT INTO TouristInfo
 		(firstName, lastName, phoneNumber, class, nickName, payment)
@@ -67,6 +82,9 @@ def insert_tourist(tourist: _models.Tourist):
 	return (query, values)
 
 def insert_ticket(ticket: _models.Ticket):
+	"""
+	Query to create Tickets table
+	"""
 	query = f"""
 	INSERT INTO Tickets
 		(type_execut, registrateDate, groupNo, startTime, endTime, duration)
@@ -76,6 +94,9 @@ def insert_ticket(ticket: _models.Ticket):
 	return (query, values)
 
 def insert_catering(catering: _models.Catering):
+	"""
+	Query to create Catering table
+	"""
 	query = f"""
 	INSERT INTO Catering
 		(mealType, drinksType)
@@ -85,6 +106,9 @@ def insert_catering(catering: _models.Catering):
 	return (query, values)
 
 def insert_fees(fees: _models.FeesInfo):
+	"""
+	Query to create FeesInfo table
+	"""
 	query = f"""
 	INSERT INTO FeesInfo
 		(label, aim, size)
@@ -94,12 +118,18 @@ def insert_fees(fees: _models.FeesInfo):
 	return (query, values)
 
 def update_value_in_table(table_name: str, new_phone_number: str, search_key: str, search_value: str):
+	"""
+	Query to update entry in custom table
+	"""
 	query = f"""
 	UPDATE {table_name} SET {search_key}='{new_phone_number}' WHERE ({search_key} = '{search_value}');
 	"""
 	return query
 
 def delete_entry_from_table(table_name: str, search_key: str, search_value: str):
+	"""
+	Query to delete entry from custom table
+	"""
 	query = f"""
 	DELETE FROM {table_name} WHERE {search_key} = '{search_value}'
 	"""

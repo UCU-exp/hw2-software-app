@@ -16,6 +16,9 @@ MYSQL_PASSWORD = _os.environ.get('PASSWORD')
 MYSQL_DB = _os.environ.get('DB_NAME')
 
 def connect():
+	"""
+	Connect to database
+	"""
 	return mysql.connector.connect(
 		host=MYSQL_HOST,
 		user=MYSQL_USER,
@@ -24,6 +27,9 @@ def connect():
 	)
 
 def create_custom_table(query: str) -> bool:
+	"""
+	Create table
+	"""
 	conn = connect()
 	cursor = conn.cursor()
 	cursor.execute(query)
@@ -32,6 +38,9 @@ def create_custom_table(query: str) -> bool:
 	return True
 
 def insert_into_custom_table(query: str, values: tuple) -> bool:
+	"""
+	Insert into table
+	"""
 	conn = connect()
 	cursor = conn.cursor()
 	cursor.execute(query, values)
@@ -40,6 +49,9 @@ def insert_into_custom_table(query: str, values: tuple) -> bool:
 	return True
 
 def update_values_by_search_key_and_search_values(query: str) -> bool:
+	"""
+	Update entry in table
+	"""
 	conn = connect()
 	cursor = conn.cursor()
 	cursor.execute(query)
@@ -48,6 +60,9 @@ def update_values_by_search_key_and_search_values(query: str) -> bool:
 	return True
 
 def delete_entrie_from_table(query: str) -> bool:
+	"""
+	Delete entrie in table
+	"""
 	conn = connect()
 	cursor = conn.cursor()
 	cursor.execute(query)
@@ -56,6 +71,9 @@ def delete_entrie_from_table(query: str) -> bool:
 	return True
 
 def find_tourist_by_phone(phone: str) -> bool:
+	"""
+	Find tourist by phone number
+	"""
 	conn = connect()
 	cursor = conn.cursor()
 	query = 'SELECT * FROM TouristInfo;'
@@ -71,6 +89,9 @@ def find_tourist_by_phone(phone: str) -> bool:
 	return True
 
 def check_if_attribute_exists(table_name: str, search_key: str):
+	"""
+	Check is column name exists
+	"""
 	conn = connect()
 	cursor = conn.cursor()
 	query = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{table_name}';"
@@ -86,6 +107,9 @@ def check_if_attribute_exists(table_name: str, search_key: str):
 	return False
 
 def check_if_value_exists(table_name: str,  search_value: str):
+	"""
+	Check id values exists
+	"""
 	conn = connect()
 	cursor = conn.cursor()
 	query = f"SELECT * FROM {table_name};"
