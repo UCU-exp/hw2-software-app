@@ -38,8 +38,8 @@ def define_catering_table():
 	return _fastapi.HTTPException(status_code=429, detail="Some error")
 
 @app.get('/create-fees')
-def define_tickets_table():
-	custom_query = _queries.init_tickets_table()
+def define_fees_table():
+	custom_query = _queries.init_fees_table()
 	status_ok = _db_setup.create_custom_table(custom_query)
 	if status_ok:
 		return _fastapi.HTTPException(status_code=200, detail="Table 'FeesInfo' created OK")
